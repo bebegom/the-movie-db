@@ -1,13 +1,13 @@
 import {Container} from 'react-bootstrap'
-import { getInTheatres } from '../services/API'
+import { getTopRated } from '../services/API'
 import {useQuery} from 'react-query'
 
-const InTheatresPage = () => {
-    const {data, isLoading, error, isError} = useQuery(['in_theatres'], getInTheatres)
+const TopRatedPage = () => {
+    const {data, isLoading, error, isError} = useQuery(['top_rated'], getTopRated)
     console.log(data)
     return (
         <Container>
-            This is in theatres-page
+            This is top rated-page
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}
@@ -24,4 +24,4 @@ const InTheatresPage = () => {
     )
 }
 
-export default InTheatresPage
+export default TopRatedPage

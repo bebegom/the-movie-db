@@ -13,7 +13,17 @@ export const getPopular = () => {
     return get(`/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
 }
 
-/* ------------------------- GET in theatres movies ------------------------- */
+/* ------------------------- GET movies in theatres ------------------------- */
 export const getInTheatres = () => {
-    return get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+    return get(`/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+}
+
+/* ------------------------- GET top rated movies ------------------------- */
+export const getTopRated = () => {
+    return get(`/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+}
+
+/* ------------------------- GET genres ------------------------- */
+export const getGenres = () => {
+    return get(`/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
 }

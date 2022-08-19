@@ -3,6 +3,8 @@ import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
 import PopularPage from './pages/PopularPage'
 import InTheatresPage from './pages/InTheatresPage'
+import TopRatedPage from './pages/TopRatedPage'
+import GenresPage from './pages/GenresPage'
 import NotFound from './pages/NotFound'
 import './assets/scss/App.scss'
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -14,10 +16,10 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/genre" element={<HomePage />} />
+				<Route path="/genres/:genre" element={<GenresPage />} />
 				<Route path="/popular" element={<PopularPage />} />
 				<Route path="/in_theatres" element={<InTheatresPage />} />
-				<Route path="/top_rated" element={<HomePage />} />
+				<Route path="/top_rated" element={<TopRatedPage />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			

@@ -3,7 +3,7 @@ import { getPopular } from '../services/API'
 import {useQuery} from 'react-query'
 
 const PopularPage = () => {
-    const {data, isLoading, error, isError} = useQuery(['pop'], getPopular)
+    const {data, isLoading, error, isError} = useQuery(['popular'], getPopular)
     console.log(data)
     return (
         <Container>
