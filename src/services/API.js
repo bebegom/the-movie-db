@@ -43,5 +43,5 @@ export const getCast = (id) => {
 
 /* -------------------------------- GET actor ------------------------------- */
 export const getActor = (id) => {
-    return get(`https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+    return get(`/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
 }

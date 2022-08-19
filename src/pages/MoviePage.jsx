@@ -5,9 +5,9 @@ import {useQuery} from 'react-query'
 import useCast from '../hooks/useCast'
 
 const MoviePage = () => {
-    const {id} = useParams()
-    const {data, isLoading, error, isError} = useQuery(['movie', id], () => getMovie(id))
-    const {data: cast, isLoading: castIsLoading, error: castError, isError: castIsError} = useCast(id)
+    const {movieId} = useParams()
+    const {data, isLoading, error, isError} = useQuery(['movie', movieId], () => getMovie(movieId))
+    const {data: cast, isLoading: castIsLoading, error: castError, isError: castIsError} = useCast(movieId)
     const baseIMG = "https://image.tmdb.org/t/p/w300"
     return (
         <Container>
@@ -36,7 +36,7 @@ const MoviePage = () => {
                                             <Card.Img variant="top" src={`${baseIMG}${i.profile_path}`} />
                                             <Card.Body>
                                                 <Card.Title>{i.name}</Card.Title>
-                                                <Button className='mt-auto' as={Link} to={`/`} variant="dark">Read more</Button> {/* TODO: change the path */}
+                                                <Button className='mt-auto' as={Link} to={`/actor/${i.id}`} variant="dark">Read more</Button> {/* TODO: change the path */}
                                             </Card.Body>
                                         </Card>
                                     ))}
