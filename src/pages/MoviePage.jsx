@@ -36,22 +36,12 @@ const MoviePage = () => {
                                             <Card.Img variant="top" src={`${baseIMG}${i.profile_path}`} />
                                             <Card.Body>
                                                 <Card.Title>{i.name}</Card.Title>
+                                                <Card.Text className='text-muted'>{i.character}</Card.Text>
                                                 <Button className='mt-auto' as={Link} to={`/actor/${i.id}`} variant="dark">Read more</Button> {/* TODO: change the path */}
                                             </Card.Body>
                                         </Card>
                                     ))}
                                 </div>
-
-                                {/* <ul>
-                                    {cast.cast.map(i => (
-                                        <li key={i.id}>
-                                            <img className="rounded-circle" src={`${baseIMG}${i.profile_path}`} alt="actor" />
-                                            <span>
-                                                {i.name}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul> */}
                             </>
                         )}
                     </div>

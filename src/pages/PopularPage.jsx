@@ -1,4 +1,4 @@
-import {Container} from 'react-bootstrap'
+import {Container, Card, Button} from 'react-bootstrap'
 import { getPopular } from '../services/API'
 import {useQuery} from 'react-query'
 
@@ -9,7 +9,7 @@ const PopularPage = () => {
 
     return (
         <Container>
-            This is most popular-page
+            <h1>Most Popular Movies</h1>
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}

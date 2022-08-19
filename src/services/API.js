@@ -45,3 +45,7 @@ export const getCast = (id) => {
 export const getActor = (id) => {
     return get(`/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
 }
+
+export const getActorsMovies = (id) => {
+    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${id}`)
+}

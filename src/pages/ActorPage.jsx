@@ -1,11 +1,15 @@
 import {useQuery} from 'react-query'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import { getActor } from '../services/API'
-import {Container} from 'react-bootstrap'
+import useActorsMovies from '../hooks/useActorsMovies'
+import {Container, Card, Button} from 'react-bootstrap'
 
 const ActorPage = () => {
     const {actorId} = useParams()
     const {data, isLoading, error, isError} = useQuery(['actor', actorId], () => getActor(actorId))
+    const {data: hookData, isLoading: hookIsLoading, error: hookError, isError: hookIsError} = useActorsMovies(actorId)
+    const baseIMG = "https://image.tmdb.org/t/p/w300"
+
     return (
         <Container>
             {isLoading && (<p>Loading actor</p>)}
@@ -13,10 +17,34 @@ const ActorPage = () => {
 
             {data && (
                 <>
-                <h1>{data.name}</h1>
-                <h2>{data.birthday}</h2>
+                    <h1>{data.name}</h1>
+                    <h2>{data.birthday}</h2>
+                    <img src={`${baseIMG}${data.profile_path}`} alt="" />
+
+                    <h2>Has been in these movies</h2>
+                    {hookIsLoading && (<p>Loading movies...</p>)}
+                    {hookIsError && (<p>ERROR {hookError.message}</p>)}
+                    {hookData && (
+                        <div className='d-flex flex-wrap'>
+                            {hookData.results.map(i => (
+                                <Card key={i.id} className='w-25'>
+                                    <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
+                                    <Card.Body>
+                                        <Card.Title>{i.title}</Card.Title>
+                                        <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button> {/* TODO: change the path */}
+                                    </Card.Body>
+                                </Card>
+                                // <li key={i.id}>
+                                //     <img src={`${baseIMG}${i.poster_path}`}/>
+                                //     <span>{i.title}</span>
+                                // </li>
+                            ))}
+                        </div>
+                        
+                    )}
                 </>
             )}
+
         </Container>
     )
 }
