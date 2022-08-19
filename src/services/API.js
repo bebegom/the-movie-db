@@ -1,5 +1,4 @@
 import axios from 'axios'
-// require('dotenv').config()
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3'
 
@@ -26,4 +25,8 @@ export const getTopRated = () => {
 /* ------------------------- GET genres ------------------------- */
 export const getGenres = () => {
     return get(`/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+}
+
+export const getGenre = (genre) => {
+    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
 }
