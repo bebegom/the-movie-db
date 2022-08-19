@@ -17,7 +17,10 @@ const PopularPage = () => {
             {data && (
                 <ul>
                     {data.results.map(i => (
-                        <li key={i.id}><img src={`${baseIMG}${i.backdrop_path}`} /><span>{i.title}</span></li>
+                        <li key={i.id}>
+                            <img src={`${baseIMG}${i.backdrop_path}`} />
+                            <span>{i.title}</span>
+                        </li>
                     ))}
                 </ul>
             )}

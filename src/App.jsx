@@ -8,6 +8,7 @@ import GenresPage from './pages/GenresPage'
 import NotFound from './pages/NotFound'
 import './assets/scss/App.scss'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import MoviePage from './pages/MoviePage'
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/movie/:id" element={<MoviePage />} />
 				<Route path="/genres/:genre" element={<GenresPage />} />
 				<Route path="/popular" element={<PopularPage />} />
 				<Route path="/in_theatres" element={<InTheatresPage />} />

@@ -4,7 +4,8 @@ import {useQuery} from 'react-query'
 
 const InTheatresPage = () => {
     const {data, isLoading, error, isError} = useQuery(['in_theatres'], getInTheatres)
-    console.log(data)
+    const baseIMG = "https://image.tmdb.org/t/p/w500"
+
     return (
         <Container>
             This is in theatres-page
@@ -15,7 +16,10 @@ const InTheatresPage = () => {
             {data && (
                 <ul>
                     {data.results.map(i => (
-                        <li key={i.id}>{i.title}</li>
+                        <li key={i.id}>
+                            <img src={`${baseIMG}${i.backdrop_path}`} />
+                            <span>{i.title}</span>
+                        </li>
                     ))}
                 </ul>
             )}
