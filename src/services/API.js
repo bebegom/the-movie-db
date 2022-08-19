@@ -31,6 +31,17 @@ export const getGenre = (genre) => {
     return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
 }
 
+/* -------------------------- GET a specific movie -------------------------- */
 export const getMovie = (id) => {
     return get(`/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+}
+
+/* ------------------------ GET the cast of the movie ----------------------- */
+export const getCast = (id) => {
+    return get(`/movie/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+}
+
+/* -------------------------------- GET actor ------------------------------- */
+export const getActor = (id) => {
+    return get(`https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
 }

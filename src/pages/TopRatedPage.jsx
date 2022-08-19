@@ -17,12 +17,12 @@ const TopRatedPage = () => {
             {data && (
                 <div className='d-flex flex-wrap justify-content-between'>
                     {data.results.map(i => (
-                            <Card bg='light' border='dark' className='mb-3' key={i.id} style={{ width: '19rem' }}>   {/* TODO: change style to className */}
-                                <Card.Img variant="top" src={`${baseIMG}${i.backdrop_path}`} />
-                                <Card.Body>
+                            <Card bg='light' border='dark' className='w-25 p-3 mt-3' key={i.id}>   {/* TODO: change style to className */}
+                                <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
+                                <Card.Body className='d-flex flex-column'>
                                     <Card.Title>{i.title}</Card.Title>
                                     <Card.Text className='text-muted'>{i.overview}</Card.Text>
-                                    <Button as={Link} to={`/movie/${i.id}`} variant="primary">Read more</Button>
+                                    <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button>
                                 </Card.Body>
                             </Card>
                     ))}
