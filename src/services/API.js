@@ -12,3 +12,8 @@ const get = async (endpoint) => {
 export const getPopular = () => {
     return get(`/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
 }
+
+/* ------------------------- GET in theatres movies ------------------------- */
+export const getInTheatres = () => {
+    return get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+}
