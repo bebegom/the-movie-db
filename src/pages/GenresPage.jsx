@@ -4,8 +4,8 @@ import {useQuery} from 'react-query'
 import {useParams} from 'react-router-dom'
 
 const GenresPage = () => {
-    const {genre} = useParams()
-    const {data, isLoading, error, isError} = useQuery(['genre', genre], () => getGenre(genre))
+    const {genreId} = useParams()
+    const {data, isLoading, error, isError} = useQuery(['genre', genreId], () => getGenre(genreId))
     console.log(data)
     return (
         <Container>
@@ -16,7 +16,7 @@ const GenresPage = () => {
 
             {data && (
                 <>
-                   <p>genre: {genre}</p>
+                   <p>genre: {genreId}</p>
 
                     <ul>
                         {data.results.map(i => (

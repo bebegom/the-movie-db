@@ -18,8 +18,9 @@ const ActorPage = () => {
             {data && (
                 <>
                     <h1>{data.name}</h1>
-                    <h2>{data.birthday}</h2>
                     <img src={`${baseIMG}${data.profile_path}`} alt="" />
+                    <div>Born: {data.birthday}</div>
+                    <div>From: {data.place_of_birth}</div>
 
                     <h2>Has been in these movies</h2>
                     {hookIsLoading && (<p>Loading movies...</p>)}
@@ -31,13 +32,9 @@ const ActorPage = () => {
                                     <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
                                     <Card.Body>
                                         <Card.Title>{i.title}</Card.Title>
-                                        <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button> {/* TODO: change the path */}
+                                        <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button>
                                     </Card.Body>
                                 </Card>
-                                // <li key={i.id}>
-                                //     <img src={`${baseIMG}${i.poster_path}`}/>
-                                //     <span>{i.title}</span>
-                                // </li>
                             ))}
                         </div>
                         

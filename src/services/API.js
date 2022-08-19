@@ -28,7 +28,8 @@ export const getGenres = () => {
 }
 
 export const getGenre = (genre) => {
-    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
+    // return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
+    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}`)
 }
 
 /* -------------------------- GET a specific movie -------------------------- */

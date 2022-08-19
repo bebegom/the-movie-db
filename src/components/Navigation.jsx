@@ -25,7 +25,7 @@ const Navigation = () => {
 							</Dropdown.Toggle>
 							<Dropdown.Menu>
 								{data.genres.map(i => (
-									<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.name}`}>{i.name}</Dropdown.Item>
+									<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.id}`}>{i.name}</Dropdown.Item>
 								))}
 							</Dropdown.Menu>
 						</Dropdown>

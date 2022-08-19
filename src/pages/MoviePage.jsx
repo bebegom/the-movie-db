@@ -19,7 +19,14 @@ const MoviePage = () => {
                     <h1>{data.title}</h1>
                     <div>
                         <img src={`${baseIMG}${data.poster_path}`}  alt="poster" />
-                        <span>{data.release_date}</span>
+                        <div className='d-flex flex-column'>
+                            <span>Release Date: {data.release_date}</span>
+                            <span>Original Language: {data.original_language}</span>
+                            <span>
+                                Ratings: {data.vote_average} 
+                                <span className='text-muted'> ({data.vote_count})</span>
+                            </span>
+                        </div>
                         <p>{data.overview}</p>
                     </div>
 
