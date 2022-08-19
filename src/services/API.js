@@ -30,3 +30,7 @@ export const getGenres = () => {
 export const getGenre = (genre) => {
     return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
 }
+
+export const getMovie = (id) => {
+    return get(`/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+}

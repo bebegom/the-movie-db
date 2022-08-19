@@ -9,30 +9,24 @@ const TopRatedPage = () => {
 
     return (
         <Container>
-            This is top rated-page
+            <h1>Top Rated Movies</h1>
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}
 
             {data && (
-                <ul>
+                <div className='d-flex flex-wrap justify-content-between'>
                     {data.results.map(i => (
-                        <li key={i.id}>
-                            {/* <a href={`/movie/${i.id}`}>
-                            <img src={`${baseIMG}${i.backdrop_path}`} />
-                            <span>{i.title}</span>
-                            </a> */}
-                            <Card style={{ width: '25rem' }}>
+                            <Card bg='light' border='dark' className='mb-3' key={i.id} style={{ width: '19rem' }}>   {/* TODO: change style to className */}
                                 <Card.Img variant="top" src={`${baseIMG}${i.backdrop_path}`} />
                                 <Card.Body>
                                     <Card.Title>{i.title}</Card.Title>
-                                    <Card.Text>{i.overview}</Card.Text>
+                                    <Card.Text className='text-muted'>{i.overview}</Card.Text>
                                     <Button as={Link} to={`/movie/${i.id}`} variant="primary">Read more</Button>
                                 </Card.Body>
                             </Card>
-                        </li>
                     ))}
-                </ul>
+                </div>
             )}
             
         </Container>
