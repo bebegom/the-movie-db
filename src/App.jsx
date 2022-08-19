@@ -15,7 +15,7 @@ function App() {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/genre" element={<HomePage />} />
 				<Route path="/popular" element={<PopularPage />} />
-				<Route path="/latest" element={<HomePage />} />
+				<Route path="/in_theatres" element={<HomePage />} />
 				<Route path="/top_rated" element={<HomePage />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
