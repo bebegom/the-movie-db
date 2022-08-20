@@ -7,9 +7,9 @@ const get = async (endpoint) => {
     return res.data
 }
 
-/* ------------------------- GET most popular movies ------------------------ */
+/* ------------------------- GET most popular movies ------------------------ */ 
 export const getPopular = () => {
-    return get(`/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+    return get(`/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`) // TODO: add page as parameter
 }
 
 /* ------------------------- GET movies in theatres ------------------------- */
@@ -27,9 +27,9 @@ export const getGenres = () => {
     return get(`/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
 }
 
-export const getGenre = (genre) => {
+export const getGenre = (genre, page) => {
     // return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&with_genres=${genre}`)
-    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}`)
+    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&page=${page}`)
 }
 
 /* -------------------------- GET a specific movie -------------------------- */

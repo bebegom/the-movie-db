@@ -1,32 +1,58 @@
-import {Container} from 'react-bootstrap'
+import {Container, Card, Button} from 'react-bootstrap'
 import { getGenre } from '../services/API'
 import {useQuery} from 'react-query'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
+import Pagination from '../components/Pagination'
+import { useState, useEffect } from 'react'
 
 const GenresPage = () => {
+    const [page, setPage] = useState(1)
     const {genreId} = useParams()
-    const {data, isLoading, error, isError} = useQuery(['genre', genreId], () => getGenre(genreId))
-    console.log(data)
+    const {data, isLoading, error, isError} = useQuery(['genre', genreId, page], () => getGenre(genreId, page))
+    const baseIMG = "https://image.tmdb.org/t/p/w500"
+
+    useEffect(() => {
+        getGenre(genreId, page)
+    }, [page])
+
     return (
         <Container>
-            This is genres-page
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}
 
             {data && (
                 <>
-                   <p>genre: {genreId}</p>
+                    <h1>
+                        genre: {/* TODO: fix so that you can see what genre you are looking at */}
+                    </h1>
 
-                    <ul>
+                    <div className='d-flex flex-wrap justify-content-between'>
                         {data.results.map(i => (
-                            <li key={i.id}>{i.title}</li>
+                            <Card bg='light' border='dark' className='w-25 p-3 mt-3' key={i.id}>
+                                <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
+                                <Card.Body className='d-flex flex-column'>
+                                    <Card.Title>{i.title}</Card.Title>
+                                    <Card.Text className='text-muted'>{i.overview}</Card.Text>
+                                    <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button>
+                                </Card.Body>
+                            </Card>
                         ))}
-                    </ul>
+                    </div>
+
+                    {/* <div className="d-flex justify-content-between align-items-center">
+                        <Button disabled={page <= 1} onClick={() => setPage(prevValue => prevValue - 1)} variant='dark'>Previous</Button>
+                            <span>page: {page}</span>
+                        <Button disabled={page >= 500} onClick={() => setPage(prevValue => prevValue + 1)} variant='dark'>Next</Button> 
+                    </div> */}
+
+                    <Pagination page={page} changePage={setPage} />
                 </>
-             
             )}
             
+
+            
+
         </Container>
     )
 }
