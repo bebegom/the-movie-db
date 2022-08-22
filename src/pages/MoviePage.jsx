@@ -22,6 +22,7 @@ const MoviePage = () => {
                             <img src={`${baseIMG}${data.poster_path}`}  alt="poster" />
                         )}
                         <div className='d-flex flex-column'>
+                            <span>Genre: {data.genres.map(i => i.name).join(' - ')}</span>
                             <span>Release Date: {data.release_date}</span>
                             <span>Original Language: {data.original_language}</span>
                             <span>
