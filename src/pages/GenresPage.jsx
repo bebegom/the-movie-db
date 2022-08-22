@@ -1,12 +1,15 @@
 import {Container, Card, Button} from 'react-bootstrap'
 import { getGenre } from '../services/API'
 import {useQuery} from 'react-query'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useSearchParams} from 'react-router-dom'
 import Pagination from '../components/Pagination'
 import { useState, useEffect } from 'react'
 
 const GenresPage = () => {
-    const [page, setPage] = useState(1)
+    // const [page, setPage] = useState(1)
+    const [searchParams, setSearchParams] = useSearchParams({query: '', page: 1})
+    // const query = searchParams.get('query')
+    const page = searchParams.get('page')
     const {genreId} = useParams()
     const {data, isLoading, error, isError, isPreviousData} = useQuery(['genre', genreId, page], () => getGenre(genreId, page), {
         keepPreviousData: true
@@ -48,7 +51,7 @@ const GenresPage = () => {
                         <Button disabled={page >= 500} onClick={() => setPage(prevValue => prevValue + 1)} variant='dark'>Next</Button> 
                     </div> */}
 
-                    <Pagination page={page} changePage={setPage} isPreviousData={isPreviousData} />
+                    <Pagination page={page} changePage={setSearchParams} isPreviousData={isPreviousData} />
                 </>
             )}
             
