@@ -2,12 +2,13 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { getGenres } from '../services/API'
 import {useQuery} from 'react-query'
 
 const Navigation = () => {
 	const {data, isLoading, error, isError} = useQuery(['genres'], getGenres)
+	const {pageParam} = useParams()
 	return (
 		<Navbar bg="dark" variant="dark" expand="md">
 			<Container>
@@ -25,7 +26,7 @@ const Navigation = () => {
 							</Dropdown.Toggle>
 							<Dropdown.Menu>
 								{data.genres.map(i => (
-									<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.id}`}>{i.name}</Dropdown.Item>
+									<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.id}/${pageParam}`}>{i.name}</Dropdown.Item>
 								))}
 							</Dropdown.Menu>
 						</Dropdown>
