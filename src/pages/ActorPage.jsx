@@ -1,13 +1,13 @@
 import {useQuery} from 'react-query'
 import {useParams, Link} from 'react-router-dom'
 import { getActor } from '../services/API'
-import useActorsMovies from '../hooks/useActorsMovies'
+// import useActorsMovies from '../hooks/useActorsMovies'
 import {Container, Card, Button} from 'react-bootstrap'
 
 const ActorPage = () => {
     const {actorId} = useParams()
     const {data, isLoading, error, isError} = useQuery(['actor', actorId], () => getActor(actorId))
-    const {data: hookData, isLoading: hookIsLoading, error: hookError, isError: hookIsError} = useActorsMovies(actorId)
+    // const {data: hookData, isLoading: hookIsLoading, error: hookError, isError: hookIsError} = useActorsMovies(actorId)
     const baseIMG = "https://image.tmdb.org/t/p/w300"
 
     return (
@@ -23,24 +23,28 @@ const ActorPage = () => {
                     )}
                     <div>Born: {data.birthday}</div>
                     <div>From: {data.place_of_birth}</div>
+                    <div>Biography: {data.biography}</div>
 
                     <h2>Has been in these movies</h2>
-                    {hookIsLoading && (<p>Loading movies...</p>)}
-                    {hookIsError && (<p>ERROR {hookError.message}</p>)}
-                    {hookData && (
+                    {/* {hookIsLoading && (<p>Loading movies...</p>)}
+                    {hookIsError && (<p>ERROR {hookError.message}</p>)} */}
+                    {/* {hookData && ( */}
                         <div className='d-flex flex-wrap'>
-                            {hookData.results.map(i => (
+                            {data.credits.cast.map(i => (
                                 <Card key={i.id} className='w-25'>
-                                    <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
+                                    {i.poster_path && (
+                                        <Card.Img variant="top" src={`${baseIMG}${i.poster_path}`} />
+                                    )}
                                     <Card.Body>
                                         <Card.Title>{i.title}</Card.Title>
+                                        <Card.Text>{i.character}</Card.Text>
                                         <Button className='mt-auto' as={Link} to={`/movie/${i.id}`} variant="dark">Read more</Button>
                                     </Card.Body>
                                 </Card>
                             ))}
                         </div>
                         
-                    )}
+                    {/* )} */}
                 </>
             )}
 

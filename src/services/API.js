@@ -38,15 +38,15 @@ export const getMovie = (id) => {
 }
 
 /* ------------------------ GET the cast of the movie ----------------------- */
-export const getCast = (id) => {
-    return get(`/movie/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
-}
+// export const getCast = (id) => {
+//     return get(`/movie/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+// }
 
 /* -------------------------------- GET actor ------------------------------- */
 export const getActor = (id) => {
-    return get(`/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+    return get(`/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&append_to_response=credits`)
 }
 
-export const getActorsMovies = (id) => {
-    return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_cast=${id}`) // TODO: there could be more movies than shown, check pages
-}
+// export const getActorsMovies = (id) => {
+//     return get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_cast=${id}`) // TODO: there could be more movies than shown, check pages
+// }
