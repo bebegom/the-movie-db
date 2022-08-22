@@ -7,8 +7,8 @@ import { useState, useEffect } from 'react'
 
 const GenresPage = () => {
     const [page, setPage] = useState(1)
-    const {genreId, pageParam} = useParams()
-    const {data, isLoading, error, isError} = useQuery(['genre', genreId, page], () => getGenre(genreId, page), {
+    const {genreId} = useParams()
+    const {data, isLoading, error, isError, isPreviousData} = useQuery(['genre', genreId, page], () => getGenre(genreId, page), {
         keepPreviousData: true
     })
     const baseIMG = "https://image.tmdb.org/t/p/w500"
@@ -48,7 +48,7 @@ const GenresPage = () => {
                         <Button disabled={page >= 500} onClick={() => setPage(prevValue => prevValue + 1)} variant='dark'>Next</Button> 
                     </div> */}
 
-                    <Pagination page={page} changePage={setPage} />
+                    <Pagination page={page} changePage={setPage} isPreviousData={isPreviousData} />
                 </>
             )}
             
