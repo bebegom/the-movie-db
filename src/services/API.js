@@ -34,7 +34,7 @@ export const getGenre = (genre, page) => {
 
 /* -------------------------- GET a specific movie -------------------------- */
 export const getMovie = (id) => {
-    return get(`/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+    return get(`/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&append_to_response=credits`)
 }
 
 /* ------------------------ GET the cast of the movie ----------------------- */

@@ -18,7 +18,9 @@ const ActorPage = () => {
             {data && (
                 <>
                     <h1>{data.name}</h1>
-                    <img src={`${baseIMG}${data.profile_path}`} alt="" />
+                    {data.profile_path && (
+                        <img src={`${baseIMG}${data.profile_path}`} alt="" />
+                    )}
                     <div>Born: {data.birthday}</div>
                     <div>From: {data.place_of_birth}</div>
 
