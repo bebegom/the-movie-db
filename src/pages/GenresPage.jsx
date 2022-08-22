@@ -1,11 +1,12 @@
 import {Container, Card, Button} from 'react-bootstrap'
-import { getGenre } from '../services/API'
+import { getGenre, getGenres } from '../services/API'
 import {useQuery} from 'react-query'
 import {useParams, Link, useSearchParams} from 'react-router-dom'
 import Pagination from '../components/Pagination'
 import { useState, useEffect } from 'react'
 
 const GenresPage = () => {
+    const [nameOfGenre, setNameOfGenre] = useState('')
     // const [page, setPage] = useState(1)
     const [searchParams, setSearchParams] = useSearchParams({query: '', page: 1})
     // const query = searchParams.get('query')
@@ -16,9 +17,16 @@ const GenresPage = () => {
     })
     const baseIMG = "https://image.tmdb.org/t/p/w500"
 
+    const getNameOfActiveGenre = async () => {
+        const allGenresData = await getGenres()
+        const thisGenre = allGenresData.genres.find(i => i.id == genreId)
+        setNameOfGenre(thisGenre.name)
+    }
+
     useEffect(() => {
         getGenre(genreId, page)
-    }, [page])
+        getNameOfActiveGenre()
+    }, [page, genreId])
 
     return (
         <Container>
@@ -29,7 +37,7 @@ const GenresPage = () => {
             {data && (
                 <>
                     <h1>
-                        genre: {/* TODO: fix so that you can see what genre you are looking at */}
+                        {nameOfGenre} {/* TODO: fix so that you can see what genre you are looking at */}
                     </h1>
 
                     <div className='d-flex flex-wrap justify-content-between'>
