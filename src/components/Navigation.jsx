@@ -7,8 +7,7 @@ import { getGenres } from '../services/API'
 import {useQuery} from 'react-query'
 
 const Navigation = () => {
-	const {data, isLoading, error, isError} = useQuery(['genres'], getGenres)
-	// const {pageParam} = useParams()
+	const {data, isLoading, error, isError} = useQuery(['genres'], getGenres) // TODO: use isLoading and isError
 	return (
 		<Navbar bg="dark" variant="dark" expand="md">
 			<Container>
