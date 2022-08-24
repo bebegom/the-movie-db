@@ -8,7 +8,7 @@ const PopularPage = () => {
 
     return (
         <Container>
-            <h1>Most Popular Movies</h1>
+            <h1>20 Most Popular Movies</h1>
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}

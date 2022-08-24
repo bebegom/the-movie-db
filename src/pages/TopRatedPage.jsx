@@ -8,7 +8,7 @@ const TopRatedPage = () => {
 
     return (
         <Container>
-            <h1>Top Rated Movies</h1>
+            <h1>20 Top Rated Movies</h1>
 
             {isLoading && (<p>Loading movies...</p>)}
             {isError && (<p>ERROR {error.message}</p>)}
