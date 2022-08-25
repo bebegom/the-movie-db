@@ -7,7 +7,7 @@ import { getGenres } from '../services/API'
 import {useQuery} from 'react-query'
 
 const Navigation = () => {
-	const {data, isLoading, error, isError} = useQuery(['genres'], getGenres) // TODO: use isLoading and isError
+	const {data} = useQuery(['genres'], getGenres)
 	return (
 		<Navbar bg="dark" variant="dark" expand="md">
 			<Container>
@@ -20,15 +20,15 @@ const Navigation = () => {
 
 						{data && (
 							<Dropdown>
-							<Dropdown.Toggle variant="dark" id="dropdown-basic">
-							Genres
-							</Dropdown.Toggle>
-							<Dropdown.Menu>
-								{data.genres.map(i => (
-									<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.id}`}>{i.name}</Dropdown.Item>
-								))}
-							</Dropdown.Menu>
-						</Dropdown>
+								<Dropdown.Toggle variant="dark" id="dropdown-basic">
+									Genres
+								</Dropdown.Toggle>
+								<Dropdown.Menu>
+									{data.genres.map(i => (
+										<Dropdown.Item value="1" key={i.id} size="sm" as={NavLink} to={`/genres/${i.id}`}>{i.name}</Dropdown.Item>
+									))}
+								</Dropdown.Menu>
+							</Dropdown>
 						)}
 
 						
